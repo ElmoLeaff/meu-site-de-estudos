@@ -1,18 +1,48 @@
 /* style.css */
 
 body {
-    background-color: #282c34; /* Um tom de cinza escuro para o fundo */
-    color: #f8f8f2; /* Cor do texto padrão: branco acinzentado */
-    font-family: Arial, sans-serif; /* Uma fonte simples */
-    margin: 20px; /* Margem em volta do conteúdo */
+    background-color: #fce4ec; /* Um rosa bem clarinho, quase branco (light pink) */
+    color: #4a4a4a; /* Um cinza escuro para o texto padrão, para contrastar bem */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Uma fonte mais moderna e legível */
+    margin: 0; /* Remove margem padrão para ocupar toda a tela */
+    padding: 20px; /* Adiciona um respiro nas bordas */
+    display: flex; /* Para centralizar o conteúdo facilmente */
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    min-height: 100vh; /* Garante que o body ocupe a altura total da tela */
+    box-sizing: border-box; /* Inclui padding na altura */
 }
 
 h1 {
-    color: #61dafb; /* Azul claro para o título */
-    text-align: center; /* Centraliza o título */
+    color: #880e4f; /* Um tom de bordô ou roxo profundo (dark magenta) */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.8em; /* Título maior */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* Sombra para destaque */
 }
 
 p {
-    color: #a0a0a0; /* Um cinza mais claro para os parágrafos */
-    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+    color: #6a1b9a; /* Um roxo vibrante para os parágrafos */
+    line-height: 1.8; /* Aumenta o espaçamento entre linhas para melhor leitura */
+    max-width: 800px; /* Alarga um pouco mais o limite de largura */
+    margin: 15px auto; /* Aumenta um pouco a margem vertical */
+    text-align: center;
+    font-size: 1.1em; /* Parágrafos um pouco maiores */
+}
+
+/* Estilo para a mensagem romântica - MAIS CHAMATIVA */
+.mensagem-romantica {
+    color: #ffb300; /* Dourado vibrante! */
+    font-size: 1.8em; /* Bem maior para a mensagem especial */
+    font-weight: bold;
+    margin-top: 60px; /* Mais espaço acima */
+    padding: 30px; /* Mais preenchimento */
+    border: 3px solid #ffb300; /* Borda dourada mais grossa */
+    border-radius: 20px; /* Cantos bem arredondados */
+    background-color: rgba(136, 14, 79, 0.85); /* Fundo bordô semi-transparente para a mensagem */
+    box-shadow: 0 0 25px rgba(255, 179, 0, 0.7); /* Brilho dourado intenso */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra mais forte no texto */
+    font-family: 'Georgia', serif; /* Uma fonte com serifa para um toque mais clássico/romântico */
+    letter-spacing: 0.05em; /* Espaçamento entre letras para legibilidade */
+    line-height: 1.5; /* Espaçamento entre linhas da mensagem */
 }
