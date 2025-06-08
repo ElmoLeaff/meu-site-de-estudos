@@ -1,0 +1,18 @@
+/* style.css */
+
+body {
+    background-color: #282c34; /* Um tom de cinza escuro para o fundo */
+    color: #f8f8f2; /* Cor do texto padrão: branco acinzentado */
+    font-family: Arial, sans-serif; /* Uma fonte simples */
+    margin: 20px; /* Margem em volta do conteúdo */
+}
+
+h1 {
+    color: #61dafb; /* Azul claro para o título */
+    text-align: center; /* Centraliza o título */
+}
+
+p {
+    color: #a0a0a0; /* Um cinza mais claro para os parágrafos */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+}
