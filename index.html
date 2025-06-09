@@ -1,15 +1,77 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título da Sua Página para o Google</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Funções Clicáveis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .button-group button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            min-width: 180px; /* Garante um tamanho mínimo para os botões */
+        }
+        .button-group button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bem-vindo ao Meu Site!</h1>
-    <p>Este é um parágrafo de exemplo para o conteúdo da sua página.</p>
-    <p>O Google vai ler o conteúdo que você colocar aqui.</p>
+    <div class="container">
+        <h1>Escolha uma função:</h1>
+        <div class="button-group">
+            <button onclick="executarFuncao('Função 1')">Função 1</button>
+            <button onclick="executarFuncao('Função 2')">Função 2</button>
+            <button onclick="executarFuncao('Configurações')">Configurações</button>
+            <button onclick="executarFuncao('Ajuda')">Ajuda</button>
+        </div>
+        <p id="message"></p>
+    </div>
 
+    <script>
+        function executarFuncao(nomeFuncao) {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = `Você clicou em: ${nomeFuncao}!`;
+            // Aqui você adicionaria o código real para cada função.
+            // Por exemplo:
+            // if (nomeFuncao === 'Função 1') {
+            //     alert('Executando a Função 1!');
+            // } else if (nomeFuncao === 'Função 2') {
+            //     window.location.href = 'outra_pagina.html';
+            // }
+        }
+    </script>
 </body>
 </html>
