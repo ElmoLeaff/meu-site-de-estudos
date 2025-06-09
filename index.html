@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela de Funções Clicáveis</title>
+    <title>Login - Lançador de Aplicativos</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,83 +13,170 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #e9ecef; /* Um fundo mais suave */
+            background-color: #e9ecef;
             color: #343a40;
         }
         .container {
             background-color: #ffffff;
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             text-align: center;
-            width: 90%; /* Ajuste para responsividade */
-            max-width: 800px; /* Largura máxima para não ficar muito esticado */
+            width: 90%;
+            max-width: 400px;
         }
         h1 {
             color: #212529;
-            margin-bottom: 35px;
-            font-size: 2.2em; /* Título um pouco maior */
+            margin-bottom: 25px;
+            font-size: 2em;
         }
-        /* Estilo para a grade de botões */
-        .button-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Colunas adaptativas */
-            gap: 20px; /* Espaçamento entre os itens da grade */
-            margin-top: 20px;
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            color: #495057;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
         }
-        .button-grid button {
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
             background-color: #007bff;
             color: white;
-            padding: 20px; /* Padding maior para um visual mais robusto */
+            padding: 12px 20px;
             border: none;
-            border-radius: 8px; /* Bordas mais arredondadas */
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 1.2em; /* Fonte maior */
-            font-weight: 600; /* Texto mais robusto */
-            transition: background-color 0.3s ease, transform 0.2s ease; /* Transição para hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra nos botões */
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
         }
-        .button-grid button:hover {
+        button:hover {
             background-color: #0056b3;
-            transform: translateY(-3px); /* Leve elevação no hover */
         }
-        #message {
-            margin-top: 30px;
-            font-size: 1.3em;
-            color: #495057;
-            font-weight: bold;
+        button.secondary {
+            background-color: #6c757d;
+        }
+        button.secondary:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Selecione uma Função</h1>
-        <div class="button-grid">
-            <button onclick="executarFuncao('Novo Pedido')">Novo Pedido</button>
-            <button onclick="executarFuncao('Consultar Estoque')">Consultar Estoque</button>
-            <button onclick="executarFuncao('Relatórios Gerenciais')">Relatórios Gerenciais</button>
-            <button onclick="executarFuncao('Cadastro de Clientes')">Cadastro de Clientes</button>
-            <button onclick="executarFuncao('Configurações do Sistema')">Configurações do Sistema</button>
-            <button onclick="executarFuncao('Ajuda e Suporte')">Ajuda e Suporte</button>
-            <button onclick="executarFuncao('Histórico de Vendas')">Histórico de Vendas</button>
-            <button onclick="executarFuncao('Gerenciar Usuários')">Gerenciar Usuários</button>
-        </div>
-        <p id="message"></p>
+        <h1>Bem-vindo(a) ao seu Lançador!</h1>
+        <div id="message" class="message" style="display: none;"></div>
+
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Fazer Login</button>
+        </form>
+        <button id="registerBtn" class="secondary">Registrar Novo Usuário</button>
+        <button id="exitBtn" class="secondary">Sair</button>
     </div>
 
     <script>
-        function executarFuncao(nomeFuncao) {
-            const messageElement = document.getElementById('message');
-            messageElement.textContent = `Função selecionada: ${nomeFuncao}`;
-            // Aqui você adicionaria a lógica específica para cada função.
-            // Exemplo:
-            // if (nomeFuncao === 'Novo Pedido') {
-            //     alert('Abrindo tela de novo pedido...');
-            //     // window.location.href = 'novo_pedido.html';
-            // } else if (nomeFuncao === 'Consultar Estoque') {
-            //     alert('Exibindo informações do estoque...');
-            // }
+        const loginForm = document.getElementById('loginForm');
+        const registerBtn = document.getElementById('registerBtn');
+        const exitBtn = document.getElementById('exitBtn');
+        const messageDiv = document.getElementById('message');
+
+        function showMessage(msg, type) {
+            messageDiv.textContent = msg;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
         }
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            showMessage('Entrando...', 'info');
+
+            try {
+                const response = await fetch('/do_login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    window.location.href = data.redirect;
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                console.error('Erro de rede:', error);
+                showMessage('Erro ao conectar com o servidor. Tente novamente.', 'error');
+            }
+        });
+
+        registerBtn.addEventListener('click', async () => {
+            const username = prompt('Digite o novo Username (mínimo 3 caracteres):');
+            if (!username) { showMessage('Registro cancelado.', 'info'); return; }
+            if (username.length < 3) { showMessage('Username muito curto.', 'error'); return; }
+
+            const password = prompt('Digite a nova Senha (mínimo 4 caracteres):');
+            if (!password) { showMessage('Registro cancelado.', 'info'); return; }
+            if (password.length < 4) { showMessage('Senha muito curta.', 'error'); return; }
+
+            const confirmPassword = prompt('Confirme a Senha:');
+            if (password !== confirmPassword) {
+                showMessage('As senhas não coincidem.', 'error');
+                return;
+            }
+
+            showMessage('Registrando...', 'info');
+
+            try {
+                const response = await fetch('/do_register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                console.error('Erro de rede:', error);
+                showMessage('Erro ao conectar com o servidor. Tente novamente.', 'error');
+            }
+        });
+
+        exitBtn.addEventListener('click', () => {
+            showMessage('Saindo do programa...', 'info');
+            setTimeout(() => {
+                // Você pode fechar a janela ou redirecionar para uma página de "até mais"
+                window.close(); // Pode não funcionar em todos os navegadores por segurança
+                // Ou apenas limpar a tela e mostrar uma mensagem
+                document.body.innerHTML = '<div class="container"><h1>Até mais!</h1></div>';
+            }, 1000);
+        });
     </script>
 </body>
 </html>
