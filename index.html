@@ -3,59 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funções Clicáveis</title>
+    <title>Tabela de Funções Clicáveis</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #e9ecef; /* Um fundo mais suave */
+            color: #343a40;
         }
         .container {
             background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
             text-align: center;
+            width: 90%; /* Ajuste para responsividade */
+            max-width: 800px; /* Largura máxima para não ficar muito esticado */
         }
         h1 {
-            color: #333;
-            margin-bottom: 25px;
+            color: #212529;
+            margin-bottom: 35px;
+            font-size: 2.2em; /* Título um pouco maior */
         }
-        .button-group button {
+        /* Estilo para a grade de botões */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Colunas adaptativas */
+            gap: 20px; /* Espaçamento entre os itens da grade */
+            margin-top: 20px;
+        }
+        .button-grid button {
             background-color: #007bff;
             color: white;
-            padding: 15px 25px;
-            margin: 10px;
+            padding: 20px; /* Padding maior para um visual mais robusto */
             border: none;
-            border-radius: 5px;
+            border-radius: 8px; /* Bordas mais arredondadas */
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-            min-width: 180px; /* Garante um tamanho mínimo para os botões */
+            font-size: 1.2em; /* Fonte maior */
+            font-weight: 600; /* Texto mais robusto */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Transição para hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra nos botões */
         }
-        .button-group button:hover {
+        .button-grid button:hover {
             background-color: #0056b3;
+            transform: translateY(-3px); /* Leve elevação no hover */
         }
         #message {
-            margin-top: 20px;
-            font-size: 1.1em;
-            color: #555;
+            margin-top: 30px;
+            font-size: 1.3em;
+            color: #495057;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Escolha uma função:</h1>
-        <div class="button-group">
-            <button onclick="executarFuncao('Função 1')">Função 1</button>
-            <button onclick="executarFuncao('Função 2')">Função 2</button>
-            <button onclick="executarFuncao('Configurações')">Configurações</button>
-            <button onclick="executarFuncao('Ajuda')">Ajuda</button>
+        <h1>Selecione uma Função</h1>
+        <div class="button-grid">
+            <button onclick="executarFuncao('Novo Pedido')">Novo Pedido</button>
+            <button onclick="executarFuncao('Consultar Estoque')">Consultar Estoque</button>
+            <button onclick="executarFuncao('Relatórios Gerenciais')">Relatórios Gerenciais</button>
+            <button onclick="executarFuncao('Cadastro de Clientes')">Cadastro de Clientes</button>
+            <button onclick="executarFuncao('Configurações do Sistema')">Configurações do Sistema</button>
+            <button onclick="executarFuncao('Ajuda e Suporte')">Ajuda e Suporte</button>
+            <button onclick="executarFuncao('Histórico de Vendas')">Histórico de Vendas</button>
+            <button onclick="executarFuncao('Gerenciar Usuários')">Gerenciar Usuários</button>
         </div>
         <p id="message"></p>
     </div>
@@ -63,13 +80,14 @@
     <script>
         function executarFuncao(nomeFuncao) {
             const messageElement = document.getElementById('message');
-            messageElement.textContent = `Você clicou em: ${nomeFuncao}!`;
-            // Aqui você adicionaria o código real para cada função.
-            // Por exemplo:
-            // if (nomeFuncao === 'Função 1') {
-            //     alert('Executando a Função 1!');
-            // } else if (nomeFuncao === 'Função 2') {
-            //     window.location.href = 'outra_pagina.html';
+            messageElement.textContent = `Função selecionada: ${nomeFuncao}`;
+            // Aqui você adicionaria a lógica específica para cada função.
+            // Exemplo:
+            // if (nomeFuncao === 'Novo Pedido') {
+            //     alert('Abrindo tela de novo pedido...');
+            //     // window.location.href = 'novo_pedido.html';
+            // } else if (nomeFuncao === 'Consultar Estoque') {
+            //     alert('Exibindo informações do estoque...');
             // }
         }
     </script>
